@@ -4,7 +4,7 @@
 
             <div class="p-5 h-fit mb-4 rounded bg-gray-50 dark:bg-gray-800 space-y-10">
                 <div class="flex justify-between items-center">
-                    <div><h1 class="font-bold">Edit Pegawai</h1></div>
+                    <div><h1 class="font-bold">Edit Kendaraan</h1></div>
                     <nav class="flex" aria-label="Breadcrumb">
                         <ol class="inline-flex items-center space-x-1 md:space-x-3">
                         <li class="inline-flex items-center">
@@ -20,7 +20,7 @@
                             <svg class="w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
                             </svg>
-                            <a href="{{ route('list.pegawai') }}" wire:navigate class="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white">List Pegawai</a>
+                            <a href="{{ route('list.vehicle') }}" wire:navigate class="ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white">List Kendaraan</a>
                             </div>
                         </li>
                         <li aria-current="page">
@@ -37,7 +37,7 @@
                 <form wire:submit='update'>
                 <div class=" sm:rounded-lg space-y-5">
                     <div class="">
-                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Lengkap</label>
+                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Kendaraan</label>
                         <input
                             autofocus
                             type="text"
@@ -50,45 +50,91 @@
                                 <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
                             @enderror
                     </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="">
+                            <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Merk</label>
+                            <input
+                                autofocus
+                                type="text"
+                                id="merk"
+                                wire:model='form.merk'
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Masukkan Merk"
+                            >
+                                @error('form.merk')
+                                    <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                                @enderror
+                        </div>
+                        <div class="">
+                            <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Bahan Bakar</label>
+                            <input
+                                autofocus
+                                type="text"
+                                id="jenis_bahan_bakar"
+                                wire:model='form.jenis_bahan_bakar'
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Masukkan Jenis Bahan Bakar"
+                            >
+                                @error('form.jenis_bahan_bakar')
+                                    <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                                @enderror
+                        </div>
+                        <div class="">
+                            <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Plat Nomor</label>
+                            <input
+                                autofocus
+                                type="text"
+                                id="plat_nomor"
+                                wire:model='form.plat_nomor'
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Masukkan Plat Nomor"
+                            >
+                                @error('form.plat_nomor')
+                                    <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                                @enderror
+                        </div>
+                        <div class="">
+                            <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tahun</label>
+                            <input
+                                autofocus
+                                type="text"
+                                id="tahun"
+                                wire:model='form.tahun'
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Masukkan Tahun"
+                            >
+                                @error('form.tahun')
+                                    <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+                                @enderror
+                        </div>
+
+                    </div>
+
                     <div class="">
-                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Riwayat Pemakaian</label>
                         <input
                             autofocus
-                            type="email"
-                            id="email"
-                            wire:model='form.email'
+                            type="text"
+                            id="riwayat_pemakaian"
+                            wire:model='form.riwayat_pemakaian'
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Masukkan Email"
+                            placeholder="Masukkan riwayat_pemakaian"
                         >
-                            @error('form.email')
+                            @error('form.riwayat_pemakaian')
                                 <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
                             @enderror
                     </div>
                     <div class="">
-                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jabatan</label>
+                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Harga</label>
                         <input
                             autofocus
                             type="text"
-                            id="jabatan"
-                            wire:model='form.jabatan'
+                            id="harga"
+                            wire:model='form.harga'
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Masukkan Jabatan"
+                            placeholder="Masukkan harga"
                         >
-                            @error('form.jabatan')
-                                <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
-                            @enderror
-                    </div>
-                    <div class="">
-                        <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No Telp</label>
-                        <input
-                            autofocus
-                            type="text"
-                            id="no_telp"
-                            wire:model='form.no_telp'
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Masukkan No Telp"
-                        >
-                            @error('form.no_telp')
+                            @error('form.harga')
                                 <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
                             @enderror
                     </div>

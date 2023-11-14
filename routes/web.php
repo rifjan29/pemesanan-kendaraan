@@ -8,6 +8,9 @@ use App\Livewire\Pages\MasterData\Driver\ListDriver;
 use App\Livewire\Pages\MasterData\Pegawai\ListPegawai;
 use App\Livewire\Pages\MasterData\Pegawai\CreatePegawai;
 use App\Livewire\Pages\MasterData\Pegawai\EditPegawaiData;
+use App\Livewire\Pages\MasterData\Vehicle\CreateVehicle;
+use App\Livewire\Pages\MasterData\Vehicle\EditVehicle;
+use App\Livewire\Pages\MasterData\Vehicle\ListVehicle;
 use App\Livewire\Pages\Pemesanan\CreatePemesanan;
 use App\Livewire\Pages\Pemesanan\ListPemesanan;
 use App\Livewire\Pages\Pemesanan\UpdatePemesanan;
@@ -42,6 +45,10 @@ Route::middleware(['auth'])->group(function () {
             Route::get('pegawai',ListPegawai::class)->name('list.pegawai');
             Route::get('pegawai/create',CreatePegawai::class)->name('create.pegawai');
             Route::get('pegawai/edit/{id}',EditPegawaiData::class)->name('edit.pegawai');
+            // Kendaraan
+            Route::get('vehicle',ListVehicle::class)->name('list.vehicle');
+            Route::get('vehicle/create',CreateVehicle::class)->name('create.vehicle');
+            Route::get('vehicle/edit/{id}',EditVehicle::class)->name('edit.vehicle');
         });
         // Pemesanan
         Route::get('list-pemesanan',ListPemesanan::class)->name('list.pemesanan');

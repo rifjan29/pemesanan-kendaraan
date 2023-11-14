@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Livewire\Pages\MasterData\Pegawai;
+namespace App\Livewire\Pages\MasterData\Vehicle;
 
 use App\Models\MasterDriverModel;
+use App\Models\MasterVehicleModel;
 use App\Models\UsersEmployeeModel;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class ListPegawai extends Component
+class ListVehicle extends Component
 {
     use WithPagination;
 
@@ -19,18 +20,17 @@ class ListPegawai extends Component
     }
 
     public function delete() {
-        UsersEmployeeModel::find($this->id)->delete();
+        MasterVehicleModel::find($this->id)->delete();
         flash()->error('Berhasil menghapus data.');
-        return redirect('dashboard/master-data/pegawai');
+        return redirect('dashboard/master-data/vehicle');
     }
 
     public function render()
     {
         // $query = UsersEmployeeModel::with('user')->where('name', 'like', '%'.$this->searchItem.'%');
-        $query = UsersEmployeeModel::with('user');
-        $pegawai = $query->paginate(10);
-        return view('livewire.pages.master-data.pegawai.list-pegawai',[
-            'data' => $pegawai
+        $vehicle = MasterVehicleModel::latest()->paginate(10);
+        return view('livewire.pages.master-data.vehicle.list-vehicle',[
+            'data' => $vehicle
         ]);
     }
 }

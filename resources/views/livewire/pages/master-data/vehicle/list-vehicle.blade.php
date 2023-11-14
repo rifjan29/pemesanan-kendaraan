@@ -4,8 +4,8 @@
         <div class="p-4 mt-14">
             <div class="p-5 h-fit mb-4 rounded bg-gray-50 dark:bg-gray-800 space-y-5">
                 <div class="flex justify-between items-center">
-                    <div><h1 class="font-bold">List Pegawai</h1></div>
-                    <a href="{{ route('create.pegawai') }}" wire:navigate class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <div><h1 class="font-bold">List Kendaraan</h1></div>
+                    <a href="{{ route('create.vehicle') }}" wire:navigate class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         <svg class="w-3.5 h-3.5 mr-2 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M9.546.5a9.5 9.5 0 1 0 9.5 9.5 9.51 9.51 0 0 0-9.5-9.5ZM13.788 11h-3.242v3.242a1 1 0 1 1-2 0V11H5.304a1 1 0 0 1 0-2h3.242V5.758a1 1 0 0 1 2 0V9h3.242a1 1 0 1 1 0 2Z"/>
                         </svg>
@@ -21,19 +21,19 @@
                                     #
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Nama Lengkap
+                                    Nama Kendaraan
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Email
+                                    Merk
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Jabatan
+                                    Plat Nomor
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Status
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Created At
+                                    Tanggal
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-center">
                                     Action
@@ -47,20 +47,16 @@
                                         {{ $loop->iteration }}
                                     </th>
                                     <td class="px-6 py-4">
-                                        {{ ucwords($item->user->name) }}
+                                        {{ ucwords($item->name) }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $item->user->email }}
+                                        {{ $item->merk }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $item->jabatan }}
+                                        {{ $item->plat_nomor }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        @if ($item->status == 'aktif')
-                                            <span class="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400">Aktif</span>
-                                        @else
-                                            <span class="bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">Non-Aktif</span>
-                                        @endif
+                                        {{ $item->riwayat_pemakaian }}
                                     </td>
                                     <td class="px-6 py-4">
                                         {{ \Carbon\Carbon::parse($item->created_at)->translatedFormat('d F Y') }}
@@ -68,7 +64,7 @@
                                     <td class="px-6 py-4 text-right">
                                         <div>
                                             <div class="inline-flex rounded-md shadow-sm" role="group">
-                                                <a href="{{ route('edit.pegawai',$item->id) }}" wire:navigate type="button" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                                                <a href="{{ route('edit.vehicle',$item->id) }}" wire:navigate type="button" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
                                                     <svg class="w-3 h-3 me-2 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 21">
                                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.418 17.861 1 20l2.139-6.418m4.279 4.279 10.7-10.7a3.027 3.027 0 0 0-2.14-5.165c-.802 0-1.571.319-2.139.886l-10.7 10.7m4.279 4.279-4.279-4.279m2.139 2.14 7.844-7.844m-1.426-2.853 4.279 4.279"/>
                                                     </svg>
