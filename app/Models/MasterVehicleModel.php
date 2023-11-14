@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class MasterVehicleModel extends Model
 {
-    use HasFactory;
+    use HasFactory,LogsActivity;
     protected $table = 'master_vehicle';
     protected $fillable = [
         'name',
@@ -20,4 +22,12 @@ class MasterVehicleModel extends Model
         'desc',
         'riwayat_pemakaian',
     ];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+                ->logOnly(['name', 'harga','jenis_bahan_bakar'])
+                ->setDescriptionForEvent(fn(string $eventName) => "This model has been {$eventName}")
+                ->useLogName('Kendaraaan');
+    }
 }

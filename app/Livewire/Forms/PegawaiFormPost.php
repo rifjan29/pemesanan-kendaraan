@@ -18,12 +18,18 @@ class PegawaiFormPost extends Form
     #[Rule([
         'required',
     ])]
-    public $name, $email,$no_telp,$jabatan;
-
+    public $name,$no_telp;
+    public $email;
+    public $jabatan;
 
     public function save() {
         $this->validate();
         try {
+            $cek = User::where('email',$this->email)->first();
+            if ($cek != null) {
+                flash()->error('Akun Sudah Tersedia.');
+                return redirect('dashboard/master-data/pegawai');
+            }
             $user = new User;
             $user->name = $this->name;
             $user->email = $this->email;

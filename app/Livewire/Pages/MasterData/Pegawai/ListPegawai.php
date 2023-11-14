@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages\MasterData\Pegawai;
 
 use App\Models\MasterDriverModel;
+use App\Models\User;
 use App\Models\UsersEmployeeModel;
 use Livewire\Attributes\Url;
 use Livewire\Component;
@@ -19,7 +20,9 @@ class ListPegawai extends Component
     }
 
     public function delete() {
-        UsersEmployeeModel::find($this->id)->delete();
+        $emp = UsersEmployeeModel::find($this->id);
+        User::find($emp->users_id)->delete();
+        $emp->delete();
         flash()->error('Berhasil menghapus data.');
         return redirect('dashboard/master-data/pegawai');
     }
