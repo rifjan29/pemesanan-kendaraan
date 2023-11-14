@@ -68,3 +68,22 @@ These instructions will help you set up and run the project on your local machin
 -**Laravel Documentation:**
 
     Visit the[Laravel documentation](https://laravel.com/docs) for more details on Laravel features and configuration.
+
+## ERD
+
+Link : [ERD Pemesanan Kendaraan](https://whimsical.com/pemesanan-kendaraan-SMC7pfmeEeQEDCZWsrqetr)
+
+
+## ERD
+
+* **Akses Admin :** 
+
+    Email : admin@mail.com
+
+    password : password
+
+* **Akses Pihak:**
+
+    Email :  manager@mail.com
+
+    password : password
