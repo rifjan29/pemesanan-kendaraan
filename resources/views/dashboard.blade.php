@@ -1,90 +1,89 @@
 @push('js')
 <script>
-    const pemesanan = @json($pemesanan); // Convert PHP array to JSON
-    console.log(pemesanan[0].vehicle.name);
-    const seriesData = pemesanan.map(item => ({
-        name: item.vehicle.name.toString(),
-        data: [{ x: "Total Pemesanan Kendaraan", y: item.total }],
-    }));
-  const options = {
-    colors: ["#1A56DB", "#FDBA8C"],
-    series: seriesData,
-        chart: {
-        type: "bar",
-        height: "320px",
-        fontFamily: "Inter, sans-serif",
-        toolbar: {
-            show: false,
-        },
-        },
-        plotOptions: {
-        bar: {
-            horizontal: false,
-            columnWidth: "70%",
-            borderRadiusApplication: "end",
-            borderRadius: 8,
-        },
-        },
-        tooltip: {
-        shared: true,
-        intersect: false,
-        style: {
-            fontFamily: "Inter, sans-serif",
-        },
-        },
-        states: {
-        hover: {
-            filter: {
-            type: "darken",
-            value: 1,
-            },
-        },
-        },
-        stroke: {
-        show: true,
-        width: 0,
-        colors: ["transparent"],
-        },
-        grid: {
-        show: false,
-        strokeDashArray: 4,
-        padding: {
-            left: 2,
-            right: 2,
-            top: -14
-        },
-        },
-        dataLabels: {
-        enabled: false,
-        },
-        legend: {
-        show: false,
-        },
-        xaxis: {
-        floating: false,
-        labels: {
-            show: true,
-            style: {
-            fontFamily: "Inter, sans-serif",
-            cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
-            }
-        },
-        axisBorder: {
-            show: false,
-        },
-        axisTicks: {
-            show: false,
-        },
-        },
-        yaxis: {
-        show: false,
-        },
-        fill: {
-        opacity: 1,
-        },
-    }
 
     document.addEventListener('livewire:navigated', () => {
+        const pemesanan = @json($pemesanan); // Convert PHP array to JSON
+            const seriesData = pemesanan.map(item => ({
+                name: item.vehicle.name.toString(),
+                data: [{ x: "Total Pemesanan Kendaraan", y: item.total }],
+        }));
+        const options = {
+            colors: ["#1A56DB", "#FDBA8C"],
+            series: seriesData,
+            chart: {
+            type: "bar",
+            height: "320px",
+            fontFamily: "Inter, sans-serif",
+            toolbar: {
+                show: false,
+            },
+            },
+            plotOptions: {
+            bar: {
+                horizontal: false,
+                columnWidth: "70%",
+                borderRadiusApplication: "end",
+                borderRadius: 8,
+            },
+            },
+            tooltip: {
+            shared: true,
+            intersect: false,
+            style: {
+                fontFamily: "Inter, sans-serif",
+            },
+            },
+            states: {
+            hover: {
+                filter: {
+                type: "darken",
+                value: 1,
+                },
+            },
+            },
+            stroke: {
+            show: true,
+            width: 0,
+            colors: ["transparent"],
+            },
+            grid: {
+            show: false,
+            strokeDashArray: 4,
+            padding: {
+                left: 2,
+                right: 2,
+                top: -14
+            },
+            },
+            dataLabels: {
+            enabled: false,
+            },
+            legend: {
+            show: false,
+            },
+            xaxis: {
+            floating: false,
+            labels: {
+                show: true,
+                style: {
+                fontFamily: "Inter, sans-serif",
+                cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
+                }
+            },
+            axisBorder: {
+                show: false,
+            },
+            axisTicks: {
+                show: false,
+            },
+            },
+            yaxis: {
+            show: false,
+            },
+            fill: {
+            opacity: 1,
+            },
+        }
         if(document.getElementById("column-chart") && typeof ApexCharts !== 'undefined') {
             const chart = new ApexCharts(document.getElementById("column-chart"), options);
             chart.render();
@@ -182,7 +181,7 @@
                             @forelse ($lastActivity as $item)
                                 <li class="mb-10 ms-6">
                                     <span class="absolute flex items-center justify-center w-11 h-11 bg-blue-100 rounded-lg -start-6 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-                                        <small class="font-sans text-current">{{ $item->event }}</small>
+                                        <small class="font-sans text-current">{{ $item->log_name }}</small>
                                     </span>
                                     <div class="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:bg-gray-700 dark:border-gray-600">
                                         <time class="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">{{ $item->created_at->diffForHumans() }}</time>

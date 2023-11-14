@@ -17,7 +17,7 @@ class Dashboard extends Component
                     ->groupBy('vehicle_id') // Sesuaikan dengan nama kolom yang merupakan ID kendaraan
                     ->selectRaw('vehicle_id, COUNT(*) as total')
                     ->get();
-        $lastActivity = Activity::all()->take(3);
+        $lastActivity = Activity::latest()->take(4)->get();
         $pegawai = UsersEmployeeModel::count();
         $driver = MasterDriverModel::count();
         $count_pesanan = VehicleReservedModel::count();
