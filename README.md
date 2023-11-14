@@ -2,13 +2,11 @@
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects,
 
-
 ## About Livewire
 
 The most productive way to build your next web app, Powerful, dynamic, **front-end** UIs without leaving PHP.
 
 ## Installation
-
 
 ## Prerequisites
 
@@ -73,17 +71,19 @@ These instructions will help you set up and run the project on your local machin
 
 Link : [ERD Pemesanan Kendaraan](https://whimsical.com/pemesanan-kendaraan-SMC7pfmeEeQEDCZWsrqetr)
 
+## UI FIGMA
 
-## ERD
+Link : [Figma](https://www.figma.com/file/QXHxph1dKbJMClYhFNhD4C/UI-Pemesanan-Kendaraan?type=design&node-id=0%3A1&mode=design&t=v2tfLzzyJLYiI0tf-1)
 
-* **Akses Admin :** 
+## Akses
 
-    Email : admin@mail.com
+* **Akses Admin :**
 
-    password : password
+  Email : admin@mail.com
 
+  password : password
 * **Akses Pihak:**
 
-    Email :  manager@mail.com
+  Email :  manager@mail.com
 
-    password : password
+  password : password
