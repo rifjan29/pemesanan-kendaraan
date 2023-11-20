@@ -14,7 +14,7 @@ class LaporanTransaksi extends Component
     }
     public function render()
     {
-        $query = VehicleReservedModel::with('driver','employee','vehicle','vehicleAgre','vehicleReturn')->latest();
+        $query = VehicleReservedModel::with('driver','employee','vehicle','vehicleAgre','vehicleReturn')->orderByDesc('id');
         $list = $query->paginate(10);
         return view('livewire.pages.laporan.laporan-transaksi',['data' => $list,]);
     }

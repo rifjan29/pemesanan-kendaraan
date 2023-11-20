@@ -10,6 +10,7 @@
         <th>Tanggal Sampai</th>
         <th>Status Pesanan</th>
         <th>Status Pengembalian</th>
+        <th>Catatan</th>
         <th>Pihak Yang Menyetujui</th>
     </tr>
     </thead>
@@ -18,7 +19,7 @@
         <tr>
             <td>{{ $item->no_transaksi }}</td>
             <td>{{ $item->employee->user->name }}</td>
-            <td></td>
+            <td>{{ $item->reason }}</td>
             <td>{{ $item->vehicle->name }} - {{ $item->vehicle->merk }}</td>
             <td>{{ $item->driver->name }}</td>
             <td>{{ \Carbon\Carbon::parse($item->date_start)->translatedFormat('d F Y') }}</td>
@@ -30,6 +31,9 @@
                 @else
                     Belum Pengembalian
                 @endif
+            </td>
+            <td>
+                {{ $item->desc != null ? $item->desc : '-'  }}
             </td>
             <td> {{ ucwords($item->vehicleAgre->user->name) }}</td>
         </tr>
