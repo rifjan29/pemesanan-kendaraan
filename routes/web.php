@@ -36,7 +36,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', Dashboard::class)->name('dashboard');
     Route::prefix('dashboard')->group(function () {
         // Master Data
-        Route::prefix('master-data')->group(function () {
+        Route::prefix('master-data')->middleware(['auth','role:admin'])->group(function () {
             // Driver
             Route::get('driver',ListDriver::class)->name('list.driver');
             Route::get('driver/create',CreateDriver::class)->name('create.driver');
@@ -56,7 +56,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('list-pemesanan/update/{id}',UpdatePemesanan::class)->name('update.pemesanan');
         Route::get('list-pemesanan/update-pengembalian/{id}',UpdatePengembalian::class)->name('update.pengembalian');
         // Laporan
-        Route::get('laporan',LaporanTransaksi::class)->name('list.laporan');
+        Route::get('laporan',LaporanTransaksi::class)->middleware(['auth','role:admin'])->name('list.laporan');
     });
 });
 // Route::prefix('dashboard')->group(function () {
